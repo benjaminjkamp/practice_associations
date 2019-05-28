@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_060819) do
+ActiveRecord::Schema.define(version: 2019_05_28_114506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2019_05_27_060819) do
     t.string "title"
     t.text "agenda"
     t.string "location"
-    t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "time"
   end
 
   create_table "speakers", force: :cascade do |t|
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_05_27_060819) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "leader_id"
+    t.index ["leader_id"], name: "index_speakers_on_leader_id"
   end
 
 end
